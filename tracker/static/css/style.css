@@ -1,6 +1,5 @@
-
 .wall{
-    background-image: url(../images/wall.jpg);
+    background-image: url(../images/wall.png);
     background-size: cover;
 }
 .clock{
