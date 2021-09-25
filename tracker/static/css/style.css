@@ -1,12 +1,13 @@
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     background: rgb(220, 235, 235);
 }
+.wall{
+    background-image: url(../images/wall.jpg);
+    background-size: cover;
+}
 .clock{
-    width: 350px;
-    height: 350px;
+    width: 200px;
+    height: 200px;
     justify-content: center;
     display: flex;
     align-items: center;
@@ -16,11 +17,11 @@ body{
 }
 .clock::before{
     content: '';
-    position: absolute;
+    
     width: 15px;
     height: 15px;
     background: #1a1827;
-    border: 2px solid #ffff;
+    border: 1px solid #ffff;
     z-index: 100000;
     border-radius: 50%;
 
@@ -30,51 +31,49 @@ body{
 .min,
 .sec
 {
-    position: absolute;
+    position: fixed;
 }
 .hour, .hr
 {
-    width: 160px;
-    height: 160px;
+    width: 130px;
+    height: 130px;
 }
 .min, .mn
 {
-    width: 190px;
-    height: 190px;
+    width: 150px;
+    height: 150px;
 }
 .sec, .sc
 {
-    width: 210px;
-    height: 210px;
+    width: 180px;
+    height: 180px;
 }
 .hr, .mn, .sc
 {
     display: flex;
     justify-content: center;
-    position: absolute;
     border-radius: 50%;
 }
 .hr::before{
     content: '';
-    position: absolute;
+    
     width: 8px;
     height: 80px;
     background: black;
-    z-index: 11;
+    z-index: 9;
 }
 .mn::before{
     content: '';
-    position: absolute;
+    
     width: 5px;
     height: 100px;
     background: grey;
-    z-index: 11;
+    z-index: 9;
 }
 .sc::before{
     content: '';
-    position: absolute;
     width: 2px;
     height: 120px;
     background: lightgrey;
-    z-index: 12;
+    z-index: 10;
 }

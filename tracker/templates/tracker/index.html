@@ -2,18 +2,21 @@
 {% load static %}
 {% block title %} | Home {% endblock %}
 {% block content %}
-<div class="container text-center justify-content-center"><br><br>
-    <div class="clock rounded-circle shadow bg-light">
-        <div class="hour">
-            <div class="hr" id="hr"></div>
-        </div>
-        <div class="min">
-            <div class="mn" id="mn"></div>
-        </div>
-        <div class="sec">
-            <div class="sc" id="sc"></div>
+<div class="container-fluid"><br><br><br><br>
+    <div class="wall p-5 text-center d-flex justify-content-center">
+        <div class="clock rounded-circle shadow-lg bg-light">
+            <div class="hour">
+                <div class="hr" id="hr"></div>
+            </div>
+            <div class="min">
+                <div class="mn" id="mn"></div>
+            </div>
+            <div class="sec">
+                <div class="sc" id="sc"></div>
+            </div>
         </div>
     </div>
+    
 </div>
 
 {% endblock content %}
