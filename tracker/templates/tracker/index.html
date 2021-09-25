@@ -2,7 +2,18 @@
 {% load static %}
 {% block title %} | Home {% endblock %}
 {% block content %}
-<div class="container">
-    <h1>THIS IS THE TRACKER</h1>
+<div class="container text-center justify-content-center"><br><br>
+    <div class="clock rounded-circle shadow bg-light">
+        <div class="hour">
+            <div class="hr" id="hr"></div>
+        </div>
+        <div class="min">
+            <div class="mn" id="mn"></div>
+        </div>
+        <div class="sec">
+            <div class="sc" id="sc"></div>
+        </div>
+    </div>
 </div>
+
 {% endblock content %}
