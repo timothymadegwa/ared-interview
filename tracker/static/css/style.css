@@ -1,6 +1,4 @@
-body{
-    background: rgb(220, 235, 235);
-}
+
 .wall{
     background-image: url(../images/wall.jpg);
     background-size: cover;
@@ -31,7 +29,7 @@ body{
 .min,
 .sec
 {
-    position: fixed;
+    position: absolute;
 }
 .hour, .hr
 {
@@ -56,7 +54,7 @@ body{
 }
 .hr::before{
     content: '';
-    
+    position: absolute;
     width: 8px;
     height: 80px;
     background: black;

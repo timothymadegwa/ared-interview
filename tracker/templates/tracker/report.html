@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %} | Report {% endblock %}
+{% block content %}
+<div class="container"><br><br><br><br>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                  <th scope="col">PROGRAM TIME</th>
+                  <th scope="col">EVENT</th>
+                  <th scope="col">MESSAGE</th>
+                  <th scope="col">ACTUAL TIME</th>
+                  <th scope="col">DISPLAY MESSAGE</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>Mark</td>
+                  <td>Otto</td>
+                  <td>@mdo</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                  <td>@mdo</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>Jacob</td>
+                  <td>Thornton</td>
+                  <td>@fat</td>
+                  <td>@mdo</td>
+                </tr>
+               
+              </tbody>
+            
+        </table>
+    </div><br>
+   
+    <div class="text-center">
+        <button class="btn btn-success">Download Report</button>
+    </div>
+</div>
+
+{% endblock content %}
