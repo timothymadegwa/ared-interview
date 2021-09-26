@@ -30,6 +30,20 @@ class SampleViewSet(ViewSet):
     def destroy(self, request, pk=None):
         return Response({'status': 'destroy router'})
 
-class TasksViewSet(ViewSet):
-    def list(self, request):
-        return Response({'status': 'List router'})
+class StartViewSet(ViewSet):
+    def create(self, request):
+        name = request.data.get("name")
+        print(name)
+        return Response({'colour': 'green'})
+
+class StopViewSet(ViewSet):
+    def create(self, request):
+        name = request.data.get("name")
+        print(name)
+        return Response({'colour': 'blue'})
+
+class ReportViewSet(ViewSet):
+    def create(self, request):
+        name = request.data.get("name")
+        print(name)
+        return Response({'colour': 'yellow'})

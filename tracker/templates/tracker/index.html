@@ -3,16 +3,22 @@
 {% block title %} | Home {% endblock %}
 {% block content %}
 <div class="container-fluid"><br><br><br><br>
-    <div class="wall p-5 text-center d-flex justify-content-center">
-        <div class="clock rounded-circle shadow-lg" style="background-color: lightgreen;">
+    <div class="wall p-5 text-center d-flex justify-content-center" id="wall">
+        <div class="clock rounded-circle shadow-lg" id="clock" style="background-color: white;">
             <div class="hour">
-                <div class="hr" id="hr"></div>
+                <div class="hr" id="hr">
+                    <div class="hr-hand" id="hr-hand"></div>
+                </div>
             </div>
             <div class="min">
-                <div class="mn" id="mn"></div>
+                <div class="mn" id="mn">
+                    <div class="mn-hand"></div>
+                </div>
             </div>
             <div class="sec">
-                <div class="sc" id="sc"></div>
+                <div class="sc" id="sc">
+                    <div class="sc-hand"></div>
+                </div>
             </div>
         </div>
     </div><br><br>
@@ -25,21 +31,23 @@
         <div class="row">
             <div class="col-4">Start 10 servers</div>
             <div class="col-4"><button class="btn alert-success">START</button></div>
-            <div class="col-4"><button class="btn btn-success rounded-pill">Execute</button></div>
+            <div class="col-4"><button class="btn btn-success rounded-pill" onclick="startServer()">Execute</button></div>
         </div><hr>
         <div class="row">
             <div class="col-4">Stop 5 servers</div>
             <div class="col-4"><button class="btn alert-danger">STOP</button></div>
-            <div class="col-4"><button class="btn btn-success rounded-pill">Execute</button></div>
+            <div class="col-4"><button class="btn btn-success rounded-pill" onclick="stopServer()">Execute</button></div>
         </div><hr>
         <div class="row">
             <div class="col-4">Get Report</div>
             <div class="col-4"><button class="btn alert-info">REPORT</button></div>
-            <div class="col-4"><button class="btn btn-success rounded-pill">Execute</button></div>
+            <div class="col-4"><button class="btn btn-success rounded-pill" onclick="report()">Execute</button></div>
         </div><hr>
     </div>
     
 </div>
 <script src="{% static 'js/clock.js' %}" async></script>
+{% csrf_token %}
+<script src="{% static 'js/tasks.js' %}"></script>
 
 {% endblock content %}

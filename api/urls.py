@@ -6,8 +6,10 @@ from .views import *
 router = DefaultRouter()
 
 router.register("sample", SampleViewSet, basename="sample")
-router.register("tasks", TasksViewSet, basename="tasks")
+router.register("start_server", StartViewSet, basename="start_server")
+router.register("stop_server", StopViewSet, basename="stop_server")
+router.register("report", ReportViewSet, basename="report")
 
 urlpatterns = [
-    path("", include(router.urls)),   
+    path("/", include(router.urls)),   
 ]

@@ -51,7 +51,7 @@
     justify-content: center;
     border-radius: 50%;
 }
-.hr::before{
+.hr-hand{
     content: '';
     position: absolute;
     width: 8px;
@@ -59,15 +59,14 @@
     background: black;
     z-index: 9;
 }
-.mn::before{
+.mn-hand{
     content: '';
-    
     width: 5px;
     height: 100px;
     background: grey;
     z-index: 9;
 }
-.sc::before{
+.sc-hand{
     content: '';
     width: 2px;
     height: 120px;
