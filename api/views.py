@@ -33,7 +33,7 @@ class StartViewSet(ViewSet):
         global servers
         servers+= number_of_servers
         session_id = get_object_or_404(Session, id=int(session_id))
-        report = Report(session_id = session_id, program_time = current_time, event = "START", 
+        report = Report(session_id = session_id, program_time = current_time, event = "START",message = f"Start {number_of_servers} servers", 
                         display_message = f"{current_time} - start {number_of_servers} servers")
         report.save()
         colour = random.choice(colours)
@@ -51,7 +51,7 @@ class StopViewSet(ViewSet):
         number_of_servers = random.randint(5,servers)
         servers-=number_of_servers
         session_id = get_object_or_404(Session, id=int(session_id))
-        report = Report(session_id = session_id, program_time = current_time, event = "STOP", 
+        report = Report(session_id = session_id, program_time = current_time, event = "STOP", message = f"Stop {number_of_servers} servers",
                         display_message = f"{current_time} - stop {number_of_servers} servers")
         report.save()
         return Response({'colour': colour, 'servers': number_of_servers})
@@ -64,7 +64,7 @@ class StatusViewSet(ViewSet):
         current_time = datetime.fromtimestamp(current_time/1000.0)
         colour = random.choice(colours)
         session_id = get_object_or_404(Session, id=int(session_id))
-        report = Report(session_id = session_id, program_time = current_time, event = "REPORT", 
+        report = Report(session_id = session_id, program_time = current_time, event = "REPORT", message = f"Report {servers} servers running",
                         display_message = f"{current_time} - report {servers} servers running")
         report.save()
         return Response({'colour': colour, 'servers': servers})

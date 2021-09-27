@@ -1,5 +1,8 @@
-fetch("/api/report"+"/5",{
-    body : JSON.stringify({search : searchVal,}),
+    let reportTable = document.getElementById('report-results')
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    const reportTableBody = document.getElementById('report-table-body')
+    reportTableBody.innerHTML = ""
+fetch("/api/report"+"/6",{
     method : "GET",
     headers :{
         "Content-Type" : "application/json",        
@@ -12,14 +15,16 @@ fetch("/api/report"+"/5",{
     console.log(data);
     if(data.length !== 0 ){
         data.forEach((item) => {
-            searchTableBody.innerHTML+= `
+            reportTableBody.innerHTML+= `
             <tr>
-                <td>${item.first_name} ${item.last_name}</td>
-                <td>${item.username}</td>
-                <td><a class="btn btn-sm btn-success rounded-pill" href="send/${item.id}">Send</a></td>
+                <td>${item.program_time}</td>
+                <td>${item.event}</td>
+                <td>${item.message}</td>
+                <td>${item.actual_time}</td>
+                <td>${item.display_message}</td>
             </tr>`
         });
-        searchTable.style.display = "block";
+        reportTable.style.display = "block";
 
     }     
 });
