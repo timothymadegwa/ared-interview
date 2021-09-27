@@ -1,8 +1,3 @@
-function reverseChildren(parent) {
-    for (var i = 1; i < parent.childNodes.length; i++){
-        parent.insertBefore(parent.childNodes[i], parent.firstChild);
-    }
-}
 let notificationSection = document.getElementById('notifications');
 function startServer(){
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -21,16 +16,17 @@ function startServer(){
     .then((res)=>res.json())
     .then((data)=>{
         console.log(data.colour);
+        let servers = data.servers;
+        notificationSection.innerHTML = "";
         notificationSection.innerHTML+=`
         <div class="col-md-8">
                 <div class="alert alert-success alert-dismissible text-center" >
-                    <div class="message">This is a start notification</div>
+                    <div class="message">${servers} servers started</div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div><br>
         </div>`
         
         wall.style.backgroundColor = data.colour;
-        reverseChildren(notificationSection)
         
     });   
 }
@@ -52,16 +48,17 @@ function stopServer(){
     .then((res)=>res.json())
     .then((data)=>{
         console.log(data.colour);
+        let servers = data.servers
         
         clock.style.backgroundColor = data.colour;
+        notificationSection.innerHTML = "";
         notificationSection.innerHTML+=`
         <div class="col-md-8">
                 <div class="alert alert-success alert-dismissible text-center" >
-                    <div class="message">This is a end notification</div>
+                    <div class="message">${servers} servers stopped</div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div><br>
         </div>`
-        reverseChildren(notificationSection)
         
     });   
 }
@@ -82,16 +79,18 @@ function report(){
     .then((res)=>res.json())
     .then((data)=>{
         console.log(data.colour);
+        let servers = data.servers
         
         hour.style.backgroundColor = data.colour;
+        notificationSection.innerHTML = "";
         notificationSection.innerHTML+=`
         <div class="col-md-8">
                 <div class="alert alert-success alert-dismissible text-center" >
-                    <div class="message">This is a report notification</div>
+                    <div class="message">${servers} servers running</div>
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div><br>
         </div>`
-        reverseChildren(notificationSection)
+
         
     });   
 }
