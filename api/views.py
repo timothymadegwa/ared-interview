@@ -12,7 +12,8 @@ import random
 
 # Create your views here.
 global colours 
-colours = ["white", "lightgreen", "green", "red", "blue"]
+colours = ["white", "lightgreen", "green", "red", "blue", "aqua","cyan","darkgray","greenyellow", "lightblue", "linen", "mediumpurple", "moccasin",
+            "orange", "pink", "skyblue", "tan"]
 
 
 class StartViewSet(ViewSet):
@@ -31,7 +32,7 @@ class StopViewSet(ViewSet):
 
 class ReportViewSet(ViewSet):
     def create(self, request):
-        name = request.data.get("name")
+        current_colour = request.data.get("current_colour")
         colour = random.choice(colours)
-        print(colour)
+        print(current_colour)
         return Response({'colour': colour})

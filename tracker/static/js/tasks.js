@@ -1,3 +1,8 @@
+function reverseChildren(parent) {
+    for (var i = 1; i < parent.childNodes.length; i++){
+        parent.insertBefore(parent.childNodes[i], parent.firstChild);
+    }
+}
 let notificationSection = document.getElementById('notifications');
 function startServer(){
     const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
@@ -25,6 +30,7 @@ function startServer(){
         </div>`
         
         wall.style.backgroundColor = data.colour;
+        reverseChildren(notificationSection)
         
     });   
 }
@@ -55,6 +61,7 @@ function stopServer(){
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div><br>
         </div>`
+        reverseChildren(notificationSection)
         
     });   
 }
@@ -84,7 +91,10 @@ function report(){
                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div><br>
         </div>`
+        reverseChildren(notificationSection)
         
     });   
 }
-
+setInterval(startServer, 30000);
+setInterval(stopServer, 40000);
+setInterval(report, 50000);

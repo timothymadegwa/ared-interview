@@ -4,10 +4,10 @@ const mn = document.querySelector("#mn")
 const sc = document.querySelector("#sc")
 
 setInterval(() => {
-    let day = new Date();
-    let hh = day.getHours() * 30;
-    let mm = day.getMinutes() * deg;
-    let ss = day.getSeconds() * deg;
+    let date = new Date();
+    let hh = date.getHours() * 30;
+    let mm = date.getMinutes() * deg;
+    let ss = date.getSeconds() * deg;
 
     hr.style.transform = `rotateZ(${hh+(mm/12)}deg)`;
     mn.style.transform = `rotateZ(${mm}deg)`;
