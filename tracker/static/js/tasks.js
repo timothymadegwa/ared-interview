@@ -4,9 +4,11 @@ if (document.readyState == 'loading'){
     ready()
 }
 function ready(){
+    let sessionId
     let startSessionBtn = document.getElementById('start-session');
     let notificationSection = document.getElementById('notifications');
-    startSessionBtn.addEventListener('click', startSession)
+    startSessionBtn.addEventListener('click', startSession);
+
     function startServer(){
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         let wall = document.getElementById('wall');
@@ -14,7 +16,7 @@ function ready(){
         let time = new Date().getTime();
                 
         fetch("/api/start_server/",{
-            body : JSON.stringify({current_colour : currentColour, current_time : time}),
+            body : JSON.stringify({current_colour : currentColour, current_time : time, session_id: sessionId}),
             method : "POST",
             headers :{
                 "Content-Type" : "application/json",        
@@ -46,7 +48,7 @@ function ready(){
         let time = new Date().getTime();
             
         fetch("/api/stop_server/",{
-            body : JSON.stringify({current_colour : currentColour, current_time : time}),
+            body : JSON.stringify({current_colour : currentColour, current_time : time, session_id: sessionId}),
             method : "POST",
             headers :{
                 "Content-Type" : "application/json",        
@@ -69,14 +71,14 @@ function ready(){
             
         });   
     }
-    function report(){
+    function status(){
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         let hour = document.getElementById('hr-hand');
         let currentColour = hour.style.backgroundColor;
         let time = new Date().getTime();
             
-        fetch("/api/report/",{
-            body : JSON.stringify({current_colour : currentColour, current_time : time}),
+        fetch("/api/status/",{
+            body : JSON.stringify({current_colour : currentColour, current_time : time, session_id: sessionId}),
             method : "POST",
             headers :{
                 "Content-Type" : "application/json",        
@@ -102,6 +104,8 @@ function ready(){
     }
     function startSession(){
         const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+        let time = new Date().getTime();
+        
         notificationSection.innerHTML = "";
             notificationSection.innerHTML+=`
             <div class="col-md-8">
@@ -111,7 +115,8 @@ function ready(){
                     </div><br>
             </div>`
             fetch("/api/start_session/",{
-                method : "GET",
+                body : JSON.stringify({current_time : time}),
+                method : "POST",
                 headers :{
                     "Content-Type" : "application/json",        
                     "X-CSRFToken" : csrftoken,
@@ -120,12 +125,13 @@ function ready(){
             })
             .then((res)=>res.json())
             .then((data)=>{
+                sessionId = data.session_id;
 
             });
         startSessionBtn.disabled = true;
         setInterval(startServer, 30000);
         setInterval(stopServer, 40000);
-        setInterval(report, 50000);
+        setInterval(status, 50000);
     }
     
 }
