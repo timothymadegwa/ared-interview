@@ -9,6 +9,14 @@ servers = 0
 colours = ["white", "lightgreen", "green", "red", "blue", "aqua","cyan","darkgray","greenyellow", "lightblue", "linen", "mediumpurple", "moccasin",
             "orange", "pink", "skyblue", "tan"]
 
+class StartSessionViewSet(ViewSet):
+    def list(self, request):
+        global servers
+        servers = 0
+        #current_time = request.data.get("current_time")
+        #current_time = datetime.fromtimestamp(current_time/1000.0)
+        print("session started")
+        return Response({'status': "Session Started",})
 
 class StartViewSet(ViewSet):
     def create(self, request):

@@ -5,6 +5,7 @@ from .views import *
 
 router = DefaultRouter()
 
+router.register("start_session", StartSessionViewSet, basename="start_session")
 router.register("start_server", StartViewSet, basename="start_server")
 router.register("stop_server", StopViewSet, basename="stop_server")
 router.register("report", ReportViewSet, basename="report")

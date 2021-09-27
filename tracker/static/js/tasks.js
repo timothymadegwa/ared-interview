@@ -29,7 +29,7 @@ function ready(){
             notificationSection.innerHTML+=`
             <div class="col-md-8">
                     <div class="alert alert-success alert-dismissible text-center" >
-                        <div class="message">${servers} servers started</div>
+                        <div class="message">${new Date().toTimeString()} ${servers} servers started</div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div><br>
             </div>`
@@ -62,7 +62,7 @@ function ready(){
             notificationSection.innerHTML+=`
             <div class="col-md-8">
                     <div class="alert alert-success alert-dismissible text-center" >
-                        <div class="message">${servers} servers stopped</div>
+                        <div class="message">${new Date().toTimeString()} ${servers} servers stopped</div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div><br>
             </div>`
@@ -92,7 +92,7 @@ function ready(){
             notificationSection.innerHTML+=`
             <div class="col-md-8">
                     <div class="alert alert-success alert-dismissible text-center" >
-                        <div class="message">${servers} servers running</div>
+                        <div class="message">${new Date().toTimeString()} ${servers} servers running</div>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div><br>
             </div>`
@@ -101,6 +101,7 @@ function ready(){
         });   
     }
     function startSession(){
+        const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
         notificationSection.innerHTML = "";
             notificationSection.innerHTML+=`
             <div class="col-md-8">
@@ -109,6 +110,18 @@ function ready(){
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div><br>
             </div>`
+            fetch("/api/start_session/",{
+                method : "GET",
+                headers :{
+                    "Content-Type" : "application/json",        
+                    "X-CSRFToken" : csrftoken,
+                },
+                mode: 'same-origin',
+            })
+            .then((res)=>res.json())
+            .then((data)=>{
+
+            });
         startSessionBtn.disabled = true;
         setInterval(startServer, 30000);
         setInterval(stopServer, 40000);
