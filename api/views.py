@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from .models import Session, Report
+from .serializer import ReportSerializer
 import random
 from datetime import date, datetime
 
@@ -67,3 +68,11 @@ class StatusViewSet(ViewSet):
                         display_message = f"{current_time} - report {servers} servers running")
         report.save()
         return Response({'colour': colour, 'servers': servers})
+
+class ReportViewSet(ViewSet):
+    def retrieve(self, request, pk=None):
+        report = Report.objects.filter(session_id__id=pk)
+        print(len(report))
+
+        serializer = ReportSerializer(report, many=True)
+        return Response(serializer.data)

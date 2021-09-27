@@ -1,7 +1,7 @@
 from rest_framework import serializers
-'''
-class SupportEmailSerializer(serializers.ModelSerializer):
+from .models import Report
+
+class ReportSerializer(serializers.ModelSerializer):
     class Meta:
-        model = SupportEmail
+        model = Report
         fields = '__all__'
-'''
