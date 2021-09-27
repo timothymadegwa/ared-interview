@@ -1,13 +1,5 @@
-from django.shortcuts import render
-# from rest_framework.authentication import RemoteUserAuthentication, SessionAuthentication, TokenAuthentication
-# from rest_framework.authtoken.serializers import AuthTokenSerializer
-from rest_framework.permissions import IsAdminUser, IsAuthenticated
-from rest_framework.viewsets import ModelViewSet, ViewSet
-from rest_framework.authtoken.models import Token
+from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from rest_framework.exceptions import NotFound, NotAcceptable
-from rest_framework import status
-
 import random
 
 # Create your views here.

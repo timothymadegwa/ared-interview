@@ -15,7 +15,6 @@ function startServer(){
     })
     .then((res)=>res.json())
     .then((data)=>{
-        console.log(data.colour);
         let servers = data.servers;
         notificationSection.innerHTML = "";
         notificationSection.innerHTML+=`
@@ -47,9 +46,7 @@ function stopServer(){
     })
     .then((res)=>res.json())
     .then((data)=>{
-        console.log(data.colour);
-        let servers = data.servers
-        
+        let servers = data.servers;
         clock.style.backgroundColor = data.colour;
         notificationSection.innerHTML = "";
         notificationSection.innerHTML+=`
@@ -78,9 +75,7 @@ function report(){
     })
     .then((res)=>res.json())
     .then((data)=>{
-        console.log(data.colour);
         let servers = data.servers
-        
         hour.style.backgroundColor = data.colour;
         notificationSection.innerHTML = "";
         notificationSection.innerHTML+=`
